@@ -8,6 +8,8 @@ module VagrantPlugins
       attr_accessor :password
       attr_accessor :name
       attr_accessor :datastore
+      attr_accessor :vmx
+      attr_accessor :network
 
       def validate(machine)
         errors = _detected_errors
@@ -17,6 +19,8 @@ module VagrantPlugins
         errors << I18n.t("config.password") if password.nil?
         errors << I18n.t("config.name") if name.nil?
         errors << I18n.t("config.datastore") if datastore.nil?
+        errors << I18n.t("config.vmx") if vmx.nil?
+        errors << I18n.t("config.network") if vmx.nil?
 
         { "esxi Provider" => errors }
       end

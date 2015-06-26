@@ -6,6 +6,8 @@ This is a Vagrant plugin for VMware ESXi.
 
 ## Usage
 
+    Make sure ofvtool is installed and in $PATH
+
     gem build vagrant-esxi.gemspec
     vagrant plugin install ./vagrant-esxi-*.gem
 
@@ -17,16 +19,19 @@ This is a Vagrant plugin for VMware ESXi.
 
 ## Example Vagrantfile
 
-    config.vm.box = "precise64_vmware"
-    config.vm.box_url = "http://files.vagrantup.com/precise64_vmware.box"
-    config.vm.hostname = "precise64"
+    config.vm.box = "rhel66_vmware"
+    config.vm.box_url = "http://my.vagrant.boxes/rhel66_vmware.box"
+    config.vm.hostname = "rhel66"
 
     config.vm.provider :esxi do |esxi|
-      esxi.name = "precise64"
+      esxi.name = "rhel66"
       esxi.host = "host"
       esxi.datastore = "datastore1"
+      esxi.vmx = "/path/to/.vagrant.d/boxes/rhel66/0/esxi/rhel66.vmx"
       esxi.user = "root"
       esxi.password = "Zkg1nJXM1sh19sw9uV6P"
+      esxi.network = "bridged=PACKER"
+
     end
 
 ## Issues
